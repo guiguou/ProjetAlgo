@@ -8,6 +8,6 @@ public class classePrincipale
     {
         //fenetreMenu menu = new fenetreMenu();
         fenetreJeu jeu = new fenetreJeu();
-        //test Github
+        //OK Github fonctionne !
     }
 }
