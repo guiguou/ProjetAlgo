@@ -14,9 +14,11 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
     boolean peutAppuyer = true;
     Boule boule = new Boule(350, 350, 2, 700, 500, 40); // (x,y,m,g,vLim,cote)
     Malus obj = new Malus();
+    Sol sol = new Sol();
+    Image pig = Toolkit.getDefaultToolkit().getImage("./src/pigFinal2.png");
+    Image imgSol = Toolkit.getDefaultToolkit().getImage("./src/sol.png");
     public LinkedList<Obstacle> listeObstacle;
 
-    Image img = Toolkit.getDefaultToolkit().getImage("./src/pigFinal2.png");
     //constructeur
     public fenetreJeu()
     {
@@ -53,11 +55,9 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
 
         //gestion du joueur
         boule.bouge(0);
-        if (boule.y > 800)
-        {
-            setVisible(false);
-            dispose();
-        }
+        if (boule.y + boule.cote >= 800-sol.hauteur)
+            chrono.stop();
+
 
         //gestion des objets
         obj.bouge(temps);
@@ -95,7 +95,8 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
 
         //dessin du joueur
         boule.dessine(g);
-        g.drawImage(img, boule.x, boule.y, this);
+        g.drawImage(pig, boule.x, boule.y, this);
+
 
         //dessin des obstacles
         for (Obstacle obs : listeObstacle)
@@ -103,6 +104,9 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
             obs.dessine(g);
         }
 
+        //dessin du sol
+        //sol.dessine(g);
+        g.drawImage(imgSol,0, 800-sol.hauteur, this);
         //affichage du score
         g.setColor(Color.white);
         g.setFont(new Font("Impact", Font.PLAIN, 36));
