@@ -13,8 +13,10 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
     int score = 0;
     boolean peutAppuyer = true;
     Boule boule = new Boule(350, 350, 2, 700, 500, 40); // (x,y,m,g,vLim,cote)
+    Malus obj = new Malus();
     public LinkedList<Obstacle> listeObstacle;
 
+    Image img = Toolkit.getDefaultToolkit().getImage("/home/thomas/Bureau/INSA/Projet/JEU_alpha/pig3.png");
     //constructeur
     public fenetreJeu()
     {
@@ -47,7 +49,7 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
         if (temps % 70 == 0)
             listeObstacle.add(new Obstacle(800, 250, 100));
 
-        setTitle("Flappy boule !");
+        setTitle("Flappig boy !");
 
         //gestion du joueur
         boule.bouge(0);
@@ -56,6 +58,11 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
             setVisible(false);
             dispose();
         }
+
+        //gestion des objets
+        obj.bouge(temps);
+        if (obj.collision(boule))
+            chrono.stop();
 
         //gestion des obstacles
         for (int i=0;i<listeObstacle.size();i++)
@@ -82,8 +89,13 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
         g.setColor(new Color(0,166,255));
         g.fillRect(0,0,this.getWidth(),this.getHeight());
 
+
+        //Objet
+        obj.dessine(g);
+
         //dessin du joueur
         boule.dessine(g);
+        g.drawImage(img, boule.x, boule.y, this);
 
         //dessin des obstacles
         for (Obstacle obs : listeObstacle)
