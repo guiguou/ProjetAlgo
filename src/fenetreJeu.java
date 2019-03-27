@@ -16,6 +16,7 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
     Malus obj = new Malus();
     Sol sol = new Sol();
     Image pig = Toolkit.getDefaultToolkit().getImage("./src/pigFinal2.png");
+    Image deadPig = Toolkit.getDefaultToolkit().getImage("./src/pigFinalMort.png");
     Image imgSol = Toolkit.getDefaultToolkit().getImage("./src/sol.png");
     public LinkedList<Obstacle> listeObstacle;
 
@@ -45,6 +46,10 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
     //TIC
     public void actionPerformed(ActionEvent e)
     {
+        //test GameOver
+        if (boule.estMort)
+            chrono.stop();
+
         temps ++;
 
         //création des obstacles
@@ -56,13 +61,12 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
         //gestion du joueur
         boule.bouge(0);
         if (boule.y + boule.cote >= 800-sol.hauteur)
-            chrono.stop();
-
+            boule.estMort = true;
 
         //gestion des objets
         obj.bouge(temps);
         if (obj.collision(boule))
-            chrono.stop();
+            boule.estMort = true;
 
         //gestion des obstacles
         for (int i=0;i<listeObstacle.size();i++)
@@ -74,7 +78,8 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
                 score++;
             //collision
             if (listeObstacle.get(0).collision(boule))
-                chrono.stop();
+                boule.estMort = true;
+
             //libération d'espace dans la liste
             if (listeObstacle.get(i).x + listeObstacle.get(i).largeur< 0)
                 listeObstacle.remove(listeObstacle.get(i));
@@ -89,14 +94,8 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
         g.setColor(new Color(0,166,255));
         g.fillRect(0,0,this.getWidth(),this.getHeight());
 
-
         //Objet
         obj.dessine(g);
-
-        //dessin du joueur
-        boule.dessine(g);
-        g.drawImage(pig, boule.x, boule.y, this);
-
 
         //dessin des obstacles
         for (Obstacle obs : listeObstacle)
@@ -105,12 +104,18 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
         }
 
         //dessin du sol
-        //sol.dessine(g);
         g.drawImage(imgSol,0, 800-sol.hauteur, this);
+
         //affichage du score
         g.setColor(Color.white);
         g.setFont(new Font("Impact", Font.PLAIN, 36));
         g.drawString(Integer.toString(score), 350, 100);
+
+        //dessin du joueur
+        boule.dessine(g, this);
+        g.drawImage(pig, boule.x, boule.y, this);
+        if (boule.estMort)
+            g.drawImage(deadPig, boule.x, boule.y, this);
     }
 
     //gestion de l'appui sur la touche espace

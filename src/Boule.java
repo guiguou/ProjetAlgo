@@ -1,4 +1,7 @@
+import java.awt.Image;
 import java.awt.*;
+import java.awt.Toolkit;
+import java.awt.image.ImageObserver;
 
 public class Boule
 {
@@ -10,6 +13,8 @@ public class Boule
 	public int a;
 	public int cote;
 	public int g;
+	public boolean estMort;
+	Image deadPig = Toolkit.getDefaultToolkit().getImage("./src/pigFinalMort.png");
 
 	public Boule(int x,int y,int m,int g, int vLim, int cote)
 	{
@@ -21,8 +26,8 @@ public class Boule
 		this.v=0;
 		this.vLim = vLim;
 		this.a=0;
+		estMort = false;
 	}
-
 
 	public void bouge(int f)
 	{	
@@ -45,11 +50,8 @@ public class Boule
         //System.out.println("La boule est en y = "+y); */
 	}
 
-	
-	public void dessine(Graphics g)
+	public void dessine(Graphics g, ImageObserver i)
     {
 
-        g.setColor(new Color(255,0,210));
-		g.fillRect(x, y, cote, cote);
 	}
 }
