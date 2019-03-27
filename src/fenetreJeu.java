@@ -16,7 +16,7 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
     Malus obj = new Malus();
     public LinkedList<Obstacle> listeObstacle;
 
-    Image img = Toolkit.getDefaultToolkit().getImage("/home/thomas/Bureau/INSA/Projet/JEU_alpha/pig3.png");
+    Image img = Toolkit.getDefaultToolkit().getImage("./src/pigFinal2.png");
     //constructeur
     public fenetreJeu()
     {
