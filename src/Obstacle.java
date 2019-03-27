@@ -28,6 +28,18 @@ public class Obstacle
         g.setColor(new Color(60,190,70));
 		g.fillRect(x, 0, largeur, L1);
         g.fillRect(x, hauteur - L2, largeur, L2);
+
+        //contours noirs
+        g.setColor(Color.black);
+        g.drawLine(x,0,x,L1);
+		g.drawLine(x,L1,x+largeur,L1);
+		g.drawLine(x+largeur,L1,x+largeur,0);
+		g.drawLine(x,800,x,hauteur-L2);
+		g.drawLine(x,hauteur-L2,x+largeur,hauteur-L2);
+		g.drawLine(x+largeur,hauteur-L2,x+largeur,800);
+
+		g.drawLine(x,L1 -40,x+largeur,L1-40);
+		g.drawLine(x, hauteur-L2+40, x+largeur, hauteur-L2+40);
 	}
     
     public void bouge()
