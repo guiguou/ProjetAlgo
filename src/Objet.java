@@ -16,8 +16,8 @@ public class Objet
 
     public void bouge(int tps)
     {
-        x -= 8;
-        y += 10*Math.sin(tps *30); //à améliorer
+        x -= 10;
+        y += 10*Math.sin(tps*0.1);
     }
 
     public boolean collision(Boule b)
