@@ -1,3 +1,4 @@
+
 import java.awt.*;
 
 
@@ -19,7 +20,10 @@ public class Obstacle
 		this.hauteur = hauteur;
          
         x = 700;
-        L1= (int)(Math.random()*(hauteur-distance));
+		while(L1 < 50)
+		{
+			L1= (int)(Math.random()*(hauteur-distance-40));
+		}
 		L2=hauteur-(L1+distance);
 	}
     
@@ -49,10 +53,15 @@ public class Obstacle
 	
 	public boolean collision(Boule b)
 	{
-		if (b.x + b.cote > x && b.x < x+largeur)
+		if (!b.invincible)
 		{
-			if (b.y < L1 || b.y+b.cote > L1 + distance)
-				return true;
+			if (b.x + b.cote > x && b.x < x+largeur)
+			{
+				if (b.y < L1 || b.y+b.cote > L1 + distance)
+					return true;
+				else
+					return false;
+			}
 			else
 				return false;
 		}
