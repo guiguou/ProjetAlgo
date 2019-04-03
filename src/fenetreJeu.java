@@ -26,7 +26,7 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
         //création de la fenêtre
         setTitle("JEU");
         setSize(700,800);
-        setLocation(50,50);
+        setLocation(300,50);
 
         //création du chrono
         chrono = new Timer(30,this);
@@ -112,7 +112,6 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
         g.drawString(Integer.toString(score), 350, 100);
 
         //dessin du joueur
-        boule.dessine(g, this);
         g.drawImage(pig, boule.x, boule.y, this);
         if (boule.estMort)
             g.drawImage(deadPig, boule.x, boule.y, this);

@@ -3,8 +3,9 @@ import java.awt.event.*;
 import java.awt.Graphics ;
 import java.util.Scanner;
 import java.awt.Color;
-import java.awt.*;
-public class fenetreMenu extends JFrame implements MouseListener, ActionListener{
+
+public class fenetreMenu extends JFrame implements MouseListener, ActionListener
+{
 
     private JButton bout4;
 
@@ -12,7 +13,7 @@ public class fenetreMenu extends JFrame implements MouseListener, ActionListener
     {
         setTitle("Menu");
         setSize(650,650);
-        setLocation(300,200);
+        setLocation(300,100);
 
         JTextField text1 = new JTextField("Enter username");
         text1.setBounds(10, 10, 100, 50);

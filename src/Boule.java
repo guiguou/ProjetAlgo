@@ -49,9 +49,4 @@ public class Boule
         y+=v*30*0.001;
         //System.out.println("La boule est en y = "+y); */
 	}
-
-	public void dessine(Graphics g, ImageObserver i)
-    {
-
-	}
 }
