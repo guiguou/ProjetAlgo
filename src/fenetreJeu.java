@@ -15,9 +15,9 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
     Boule boule = new Boule(350, 350, 2, 700, 500, 40); // (x,y,m,g,vLim,cote)
     Malus obj = new Malus();
     Sol sol = new Sol();
-    Image pig = Toolkit.getDefaultToolkit().getImage("./src/pigFinal2.png");
-    Image deadPig = Toolkit.getDefaultToolkit().getImage("./src/pigFinalMort.png");
-    Image imgSol = Toolkit.getDefaultToolkit().getImage("./src/sol.png");
+    Image pig = Toolkit.getDefaultToolkit().getImage("pigFinal2.png");           
+    Image deadPig = Toolkit.getDefaultToolkit().getImage("pigFinalMort.png");
+    Image imgSol = Toolkit.getDefaultToolkit().getImage("sol.png");
     public LinkedList<Obstacle> listeObstacle;
 
     //constructeur
@@ -48,7 +48,12 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
     {
         //test GameOver
         if (boule.estMort)
+        {
             chrono.stop();
+            setVisible(false);
+            fenetreGameOver fen = new fenetreGameOver(score);
+        }
+            
 
         temps ++;
 
@@ -66,7 +71,17 @@ public class fenetreJeu extends JFrame implements KeyListener, ActionListener
         //gestion des objets
         obj.bouge(temps);
         if (obj.collision(boule))
-            boule.estMort = true;
+        {
+            int tCollision = temps;
+            
+           // while (temps - tCollision <= 100)
+            {
+                //boule.invincible = true;
+            }
+            //boule.invincible = false;
+            System.out.println("BONUS !");
+        }
+            
 
         //gestion des obstacles
         for (int i=0;i<listeObstacle.size();i++)

@@ -14,7 +14,7 @@ public class Boule
 	public int cote;
 	public int g;
 	public boolean estMort;
-	Image deadPig = Toolkit.getDefaultToolkit().getImage("./src/pigFinalMort.png");
+	public boolean invincible;
 
 	public Boule(int x,int y,int m,int g, int vLim, int cote)
 	{
@@ -27,6 +27,7 @@ public class Boule
 		this.vLim = vLim;
 		this.a=0;
 		estMort = false;
+		invincible = false;
 	}
 
 	public void bouge(int f)
