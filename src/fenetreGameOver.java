@@ -22,8 +22,8 @@ public class fenetreGameOver extends JFrame implements MouseListener, ActionList
        setTitle("Game Over!");
        this.score = score;
         setSize(700,800);
-        //setLocation(300,200);
-        setLocationRelativeTo(null);
+        setLocation(300,50);
+        //setLocationRelativeTo(null);
         Bouton1 = new JButton("Nouvelle partie");
         Bouton1.setBounds(210,500,300,70);
         Font police = new Font(" Calibri ",Font.BOLD,20);

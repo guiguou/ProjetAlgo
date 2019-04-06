@@ -68,8 +68,10 @@ public class fenetreMenu extends JFrame implements MouseListener, ActionListener
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == bout4)
+        {
             setVisible(false);
-        fenetreJeu jeu = new fenetreJeu();
+            fenetreJeu jeu = new fenetreJeu(); 
+        }
     }
 
 
