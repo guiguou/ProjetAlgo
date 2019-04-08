@@ -38,16 +38,11 @@ public class Boule
             v = vLim;
         else if (v<-vLim)
             v=-vLim;
-		
-
 		if (y <= 0)
 		{
 			v = 0;
 			y +=20;
 		}
-		
-       // System.out.println("La vitesse est v = "+v);
         y+=v*30*0.001;
-        //System.out.println("La boule est en y = "+y); */
 	}
 }

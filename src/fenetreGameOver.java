@@ -23,7 +23,6 @@ public class fenetreGameOver extends JFrame implements MouseListener, ActionList
        this.score = score;
         setSize(700,800);
         setLocation(300,50);
-        //setLocationRelativeTo(null);
         Bouton1 = new JButton("Nouvelle partie");
         Bouton1.setBounds(210,500,300,70);
         Font police = new Font(" Calibri ",Font.BOLD,20);
@@ -35,7 +34,7 @@ public class fenetreGameOver extends JFrame implements MouseListener, ActionList
         
         Bouton2 = new JButton("Menu");
         Bouton2.setBounds(210,600,300,70);
-        Font police1 = new Font(" Calibri ",Font.BOLD,20);
+        Font police1 = new Font("Impact",Font.BOLD,20);
         Bouton2.setBackground(new Color(255,192,203));
         Bouton2.setForeground(Color.white);
         Bouton2.setFont(police1);
@@ -44,13 +43,13 @@ public class fenetreGameOver extends JFrame implements MouseListener, ActionList
         
         JLabel Texte = new JLabel("SCORE: " +score);
         Texte.setBounds(272,140,250,150);
-        Font police2 = new Font(" Calibri ",Font.BOLD,22);
+        Font police2 = new Font("Impact",Font.BOLD,22);
         Texte.setForeground(Color.black);
         Texte.setFont(police2);
          add(Texte);
          JLabel Texte2 = new JLabel("GAME OVER ! ");
         Texte2.setBounds(220,100,250,150);
-        Font police3 = new Font(" Calibri ",Font.BOLD,30);
+        Font police3 = new Font("Impact",Font.BOLD,30);
         Texte2.setForeground(Color.black);
         Texte2.setFont(police3);
          add(Texte2);
@@ -73,7 +72,6 @@ public class fenetreGameOver extends JFrame implements MouseListener, ActionList
         
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        System.out.println(this.getWidth());
     }
     
     public void actionPerformed(ActionEvent e){
